@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src *">
+        -->
+		<meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.min.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>RoomWatch APP</title>
+    </head>
+    <body>
+		<div class="app">
+            <div class="header">
+				<button type="button" id="barsButton" class="btn btn-default btn-sm">
+				  <span class="glyphicon glyphicon-th"></span>
+				</button>
+				<h1>RoomWatch</h1>
+			</div>
+			<div class="content"> 
+				<div class="row">
+					<div class="col-md-6">
+						<button id="voiceButton" class="full-circle btn btn-default btn-sm">
+							<div class="rotate-circle">
+								<div class="little-circle"></div>
+							</div>
+						</button>
+					</div>
+					<div class="col-md-6">
+						<div class="checkbox">
+						  <label>
+							<input id="listenContinueChecked" data-toggle="toggle" type="checkbox">
+							<span>Ecoute continue désactivé</span>
+						  </label>
+						</div>
+						<ul class="discution"></ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-10 col-xs-8">
+						<input id="textToSendInput" class="btn btn-default btn-sm"/>
+					</div>
+					<div class="col-md-2 col-xs-4">
+						<button id="buttonToSendInput" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-send"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="loginPanel" class="slideLeftPanel">
+			<p id="loginMessage" class="alert-danger"></p>
+			<form>
+				<div class="form-group">
+					<label for="serverHostInput">Server Adresse</label>
+					<input type="text" class="form-control" id="serverHostInput" aria-describedby="serverHostHelp" placeholder="192.168.1.*">
+					<small id="serverHostHelp" class="form-text text-muted">ip du server nodejs d'automatisation.</small><br/>
+					<label for="serverPortInput">Server Port</label>
+					<input type="text" class="form-control" id="serverPortInput" aria-describedby="serverHostHelp" placeholder="8080">			
+				</div>
+				<div class="form-group">
+					<label for="username">Utilisateur</label>
+					<input type="text" class="form-control" id="username" placeholder="utilisateur">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" id="password" placeholder="password">
+				</div>
+				<button id="connectionButton"type="submit" class="btn btn-primary">Valider</button>
+			</form>
+		</div>
+		<div id="sidePanel">
+			<button type="button" id="returnButton" class="btn btn-default btn-sm">
+				<span class="glyphicon glyphicon-arrow-left"></span>
+			</button>
+			<div class="row">
+				<div class="col-md-4 col-xs-6">
+					<div class="infoTemperature"> 
+						<p><span class="tempValue">32</span>°C</p>
+						<p>Humidité : <span class="humValue">30</span>%<p>
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-6">
+					<div class="infoPresence"></div>
+				</div>
+				<div class="col-md-12 col-xs-12">
+					<div class="controlPanel">
+						<div class="checkbox">
+						  <label>
+							<input id="alarmChecked" data-toggle="toggle" type="checkbox">
+							<span>Mode alarm désactivé</span>
+						  </label>
+						</div>
+						<div class="form-group">
+							<label for="wakeUpInputFile">Music pour le reveil</label>
+							<input type="file" id="wakeUpInputFile">
+						</div>
+						<audio id="sound" controls></audio>
+					</div>
+				</div>
+				<div class="col-md-12 col-xs-12">
+					<a class="speachSyntheseSupport btn btn-danger btn-block">Synthese vocal KO</a>
+					<a class="speachRecogniseSupport btn btn-danger btn-block"> Reconnaissance vocal KO</a>			
+				</div>
+				<div class="col-md-12 col-xs-12">
+					<a id="disconnectButton" class="btn btn-default btn-block">Déconnection</a>		
+				</div>
+			</div>
+		</div>
+		<div id="loadingPanel">
+			<h1 class="blink">Chargement..</h1>
+		</div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/lib/artyom.min.js"></script>
+        <script type="text/javascript" src="js/lib/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript" src="js/lib/jquery.autocomplete.js"></script>
+        <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/lib/bootstrap-toggle.min.js"></script>
+		<script type="text/javascript" src="js/lib/socket.io.js"></script>
+		<!-- My scripts-->
+        <script type="text/javascript" src="js/voicecommands.js"></script>
+		<script type="text/javascript" src="js/socketEvents.js"></script>
+		<script type="text/javascript" src="js/dispatchEvents.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' * 'unsafe-inline'">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>myapp</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>My app</h1>
+			<div class="content">
+				<div class="row">
+					<div class="col-md-12">
+						<button id="voiceButton" class="btn btn-default"></button>
+					</div>
+					<div class="col-md-12">
+						<ul id="conversation">
+							
+						</ul>
+					</div>
+					<div class="col-md-12 col-xs-12">
+						<a class="speachSyntheseSupport btn btn-danger btn-block">Synthese vocal KO</a>
+						<a class="speachRecogniseSupport btn btn-danger btn-block"> Reconnaissance vocal KO</a>			
+					</div>
+				</div>
+			</div>
+        </div>
+		<div id="loginPanel" class="slideLeftPanel">
+			<p id="loginMessage" class="alert-danger"></p>
+			<form>
+				<div class="form-group">
+					<label for="serverHostInput">Server Adresse</label>
+					<input type="text" class="form-control" id="serverHostInput" aria-describedby="serverHostHelp" placeholder="192.168.1.*">
+					<small id="serverHostHelp" class="form-text text-muted">ip du server nodejs d'automatisation.</small><br/>
+					<label for="serverPortInput">Server Port</label>
+					<input type="text" class="form-control" id="serverPortInput" aria-describedby="serverHostHelp" placeholder="8080">			
+				</div>
+				<div class="form-group">
+					<label for="username">Utilisateur</label>
+					<input type="text" class="form-control" id="username" placeholder="utilisateur">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" id="password" placeholder="password">
+				</div>
+				<button id="connectionButton"type="submit" class="btn btn-primary">Valider</button>
+			</form>
+		</div>
+		<div id="loadingPanel">
+			<h1 class="blink">Chargement..</h1>
+		</div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/lib/jquery-3.1.0.min.js"></script>
+        <script type="text/javascript" src="js/lib/artyom.min.js"></script>
+        <script type="text/javascript" src="js/lib/socket.io.js"></script>
+        
+		<script type="text/javascript" src="js/voicecommand.js"></script>
+		<script type="text/javascript" src="js/events.js"></script>
+        <script type="text/javascript" src="js/services.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
